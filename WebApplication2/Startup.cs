@@ -11,10 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using workshop03.Data;
-using workshop03.Models;
+using WebApplication2.Data;
+using WebApplication2.Models;
 
-namespace workshop03
+namespace WebApplication2
 {
     public class Startup
     {

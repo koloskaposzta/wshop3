@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace workshop03.Models
+namespace WebApplication2.Models
 {
     public class SiteUser : IdentityUser
     {

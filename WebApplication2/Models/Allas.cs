@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace workshop03.Models
+namespace WebApplication2.Models
 {
     public class Allas
     {
