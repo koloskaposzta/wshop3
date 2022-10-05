@@ -23,6 +23,22 @@ namespace WebApplication2.Controllers
             _roleManager = roleManager;
             _db = db;
         }
+        public IActionResult Add(Allas allas)
+        {
+
+            _db.Allasok.Add(allas);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult >Jelentkezes(string uid)
+        {
+            var user = await _userManager.GetUserAsync(this.User);
+            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
+            return RedirectToAction(nameof(Index));
+        }
 
         public IActionResult Index()
         {
