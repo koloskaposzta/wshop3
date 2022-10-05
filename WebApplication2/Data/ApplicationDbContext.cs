@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using workshop03.Models;
+using WebApplication2.Models;
 
-namespace workshop03.Data
+namespace WebApplication2.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
