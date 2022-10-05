@@ -1,5 +1,17 @@
-﻿<h1>Üdv az allas borzen</h1>
+﻿@model IEnumerable<Allas>
+<h1>Üdv az allas borzen</h1>
 
-<div class="grid">
-
+<div class="grid w-50" style="--bs-columns: 3">
+ @foreach (var item in Model.ToList())
+ {
+     <div class="card">
+         <div class="card-body"
+              >
+             <div class="card-title" >@item.Megnevezes</div>
+             <div class="card-subtitle"> @item.Vallalat</div>
+             <div class="card-text"> Bérezés: @item.Oraber</div>
+             <a href="#"> Jelentkezz! </a>
+         </div>
+     </div>
+ }
 </div>
