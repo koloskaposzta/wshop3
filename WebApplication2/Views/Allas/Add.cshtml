@@ -1,0 +1,35 @@
+﻿@model WebApplication2.Models.Allas
+
+
+<h4>Állás</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vallalat" class="control-label"></label>
+                <input asp-for="Vallalat" class="form-control" />
+                <span asp-validation-for="Vallalat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Megnevezes" class="control-label"></label>
+                <input asp-for="Megnevezes" class="form-control" />
+                <span asp-validation-for="Megnevezes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oraber" class="control-label"></label>
+                <input asp-for="Oraber" class="form-control" />
+                <span asp-validation-for="Oraber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

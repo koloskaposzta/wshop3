@@ -23,6 +23,8 @@ namespace WebApplication2.Controllers
             _roleManager = roleManager;
             _db = db;
         }
+        [HttpPost]
+
         public IActionResult Add(Allas allas)
         {
 
@@ -84,6 +86,7 @@ namespace WebApplication2.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public IActionResult Add()
         {
 
