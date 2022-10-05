@@ -27,7 +27,7 @@ namespace WebApplication2.Controllers
 
         public IActionResult Add(Allas allas)
         {
-
+            allas.UID = Guid.NewGuid().ToString();
             _db.Allasok.Add(allas);
             _db.SaveChanges();
 
