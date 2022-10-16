@@ -38,7 +38,8 @@ namespace WebApplication2.Controllers
         public async Task<IActionResult>Jelentkezes(string uid)
         {
             var user = await _userManager.GetUserAsync(this.User);
-            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
+            var allas = _db.Allasok.FirstOrDefault(t => t.UID == uid);
+            allas.Jelentkezok.Add(user);
             return RedirectToAction(nameof(Index));
         }
 

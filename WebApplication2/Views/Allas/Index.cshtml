@@ -11,13 +11,13 @@
     {
         <div class="card">
             <div class="card-body">
-                <div class="card-title">@item.Megnevezes</div>
+                <div class="card-title fs-1 text-info fw-bold">@item.Megnevezes</div>
                 <div class="card-subtitle"> @item.Vallalat</div>
                 <div class="card-text"> Bérezés: @item.Oraber</div>
                 
                 @*@if (!item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
                 {*@
-                        <a href="Allas/Jelentkezes?uid=@UserManager.GetUserId(User)">Jelentkezes</a>
+                        <a href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
                 @*}*@
             </div>
         </div>
