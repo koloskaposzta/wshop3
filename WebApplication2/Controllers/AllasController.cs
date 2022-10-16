@@ -45,9 +45,10 @@ namespace WebApplication2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_db.Allasok);
+            var user = await _userManager.GetUserAsync(this.User);
+            return View(_db.Allasok.Where(x=> x.Oraber>user.MinimumOraber));
         }
 
         public async Task<IActionResult> DelegateAdmin()

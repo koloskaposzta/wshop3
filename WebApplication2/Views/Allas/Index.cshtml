@@ -14,15 +14,11 @@
                 <div class="card-title">@item.Megnevezes</div>
                 <div class="card-subtitle"> @item.Vallalat</div>
                 <div class="card-text"> Bérezés: @item.Oraber</div>
-                
-               @* 
-                @if (item.Jelentkezok!=null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
-                {*@
+                @if (item.Jelentkezok != null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
+                {
                         <a href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
-                @*}*@
-               @* @if (item.Jelentkezok != null) {
-                    <div class ="card-subtitle">@item.Jelentkezok.Count()</div>
-                }*@
+                }
+                <div class ="card-subtitle">@item.Jelentkezok.Count()</div>
             </div>
         </div>
     }
