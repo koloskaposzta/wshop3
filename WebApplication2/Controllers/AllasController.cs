@@ -40,8 +40,11 @@ namespace WebApplication2.Controllers
         {
             
             var user = await _userManager.GetUserAsync(this.User);
-            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
+            var allas = _db.Allasok.FirstOrDefault(t => t.UID == uid);
+            allas.Jelentkezok.Add(user);
+            var b =allas.Jelentkezok.Count();
             _db.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
 
