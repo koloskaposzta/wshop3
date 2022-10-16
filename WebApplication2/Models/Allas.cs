@@ -14,5 +14,9 @@ namespace WebApplication2.Models
         public string Megnevezes { get; set; }
         public int Oraber { get; set; }
         public virtual ICollection<SiteUser> Jelentkezok { get; set; }
+        public Allas()
+        {
+            this.Jelentkezok = new HashSet<SiteUser>();
+        }
     }
 }
