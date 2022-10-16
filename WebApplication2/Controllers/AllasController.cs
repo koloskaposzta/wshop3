@@ -40,17 +40,19 @@ namespace WebApplication2.Controllers
         {
             
             var user = await _userManager.GetUserAsync(this.User);
-            var allas = _db.Allasok.FirstOrDefault(t => t.UID == uid);
-            allas.Jelentkezok.Add(user);
-            var b =allas.Jelentkezok.Count();
+            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
+            var x = _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok;
             _db.SaveChanges();
-
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(this.User);
+            if (user is null)
+            {
+                return View(_db.Allasok);
+            }
             return View(_db.Allasok.Where(x=> x.Oraber>user.MinimumOraber));
         }
 
