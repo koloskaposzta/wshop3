@@ -6,24 +6,36 @@
 
 <h1>Üdv az allas borzen</h1>
 
-<div class="grid w-50" style="--bs-columns: 3">
+<div class="row">
     @foreach (var item in Model.ToList())
     {
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title fs-1 text-info fw-bold">@item.Megnevezes</div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body w-auto mx-auto">
+                <div class="card-title">
+                    <h3 class="text-info fw-bold">@item.Megnevezes</h3>
+                </div>
                 <div class="card-subtitle"> @item.Vallalat</div>
-                <div class="card-text"> Bérezés: @item.Oraber</div>
+                <div class="card-text mb-4"> Bérezés: @item.Oraber</div>
                 
                 
                 @if (item.Jelentkezok!=null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
                 {
-                        <a href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
+                        <a class="alert alert-primary" href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
                 }
                 @if (item.Jelentkezok !=null) {
-                    <div class ="card-subtitle">Jelentkezok: @item.Jelentkezok.Count()</div>
+                    <div class="mt-4 card-subtitle">Jelentkezők: @item.Jelentkezok.Count() fő</div>
+                     @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin")) {
+                         @foreach (var jelentkezo in item.Jelentkezok){
+                             <span class="">
+                                 @jelentkezo.Email
+                             </span>
+                         }
+                     }
                 }
+                
             </div>
         </div>
+    </div>
     }
 </div>
