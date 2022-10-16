@@ -28,6 +28,7 @@ namespace WebApplication2.Controllers
         public IActionResult Add(Allas allas)
         {
             allas.UID = Guid.NewGuid().ToString();
+            allas.Jelentkezok = new List<SiteUser>();
             _db.Allasok.Add(allas);
             _db.SaveChanges();
 
@@ -37,9 +38,10 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public async Task<IActionResult>Jelentkezes(string uid)
         {
+            
             var user = await _userManager.GetUserAsync(this.User);
-            var allas = _db.Allasok.FirstOrDefault(t => t.UID == uid);
-            allas.Jelentkezok.Add(user);
+            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
+            _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
