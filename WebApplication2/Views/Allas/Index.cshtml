@@ -14,7 +14,7 @@
                 <div class="card-title fs-1 text-info fw-bold">@item.Megnevezes</div>
                 <div class="card-subtitle"> @item.Vallalat</div>
                 <div class="card-text"> Bérezés: @item.Oraber</div>
-                @if (item.Jelentkezok != null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
+                @if (SignInManager.IsSignedIn(User) && item.Jelentkezok != null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
                 {
                         <a href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
                 }
