@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using System.Linq
 @model IEnumerable<Allas>
 @inject UserManager<SiteUser> UserManager
 @inject SignInManager<SiteUser> SignInManager
@@ -13,11 +14,11 @@
                 <div class="card-title">@item.Megnevezes</div>
                 <div class="card-subtitle"> @item.Vallalat</div>
                 <div class="card-text"> Bérezés: @item.Oraber</div>
-                <a href="#"> Jelentkezz! </a>
-                @if (!item.Jelentkezok.Select(x=>x.Id).Contains(UserManager.GetUserId(User)))
-                {
-                    <a href="Allas/Jelentkezes?uid=@UserManager.GetUserId(User))">Jelentkezes</a>
-                }
+                
+                @*@if (!item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
+                {*@
+                        <a href="Allas/Jelentkezes?uid=@UserManager.GetUserId(User)">Jelentkezes</a>
+                @*}*@
             </div>
         </div>
     }
