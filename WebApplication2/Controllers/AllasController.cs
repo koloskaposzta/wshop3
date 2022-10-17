@@ -28,8 +28,8 @@ namespace WebApplication2.Controllers
         public IActionResult Add(Allas allas)
         {
             allas.UID = Guid.NewGuid().ToString();
-            allas.Jelentkezok = new List<SiteUser>();
-            _db.Allasok.Add(allas);
+            allas.SiteUsers = new List<SiteUser>();
+            _db.Allass.Add(allas);
             _db.SaveChanges();
 
             return RedirectToAction(nameof(Index));
@@ -40,8 +40,8 @@ namespace WebApplication2.Controllers
         {
             
             var user = await _userManager.GetUserAsync(this.User);
-            _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok.Add(user);
-            var x = _db.Allasok.FirstOrDefault(t => t.UID == uid)?.Jelentkezok;
+            _db.Allass.FirstOrDefault(t => t.UID == uid)?.SiteUsers.Add(user);
+            var x = _db.Allass.FirstOrDefault(t => t.UID == uid)?.SiteUsers;
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
@@ -51,9 +51,9 @@ namespace WebApplication2.Controllers
             var user = await _userManager.GetUserAsync(this.User);
             if (user is null)
             {
-                return View(_db.Allasok);
+                return View(_db.Allass);
             }
-            return View(_db.Allasok.Where(x=> x.Oraber>user.MinimumOraber));
+            return View(_db.Allass.Where(x=> x.Oraber>user.MinimumOraber));
         }
 
         public async Task<IActionResult> DelegateAdmin()

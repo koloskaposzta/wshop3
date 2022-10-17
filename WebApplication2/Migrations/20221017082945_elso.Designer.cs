@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication2.Data;
 
-namespace WebApplication2.Data.Migrations
+namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017082945_elso")]
+    partial class elso
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,15 +23,15 @@ namespace WebApplication2.Data.Migrations
 
             modelBuilder.Entity("AllasSiteUser", b =>
                 {
-                    b.Property<string>("AllasokUID")
+                    b.Property<string>("AllassUID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("JelentkezokId")
+                    b.Property<string>("SiteUsersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("AllasokUID", "JelentkezokId");
+                    b.HasKey("AllassUID", "SiteUsersId");
 
-                    b.HasIndex("JelentkezokId");
+                    b.HasIndex("SiteUsersId");
 
                     b.ToTable("AllasSiteUser");
                 });
@@ -256,7 +258,7 @@ namespace WebApplication2.Data.Migrations
 
                     b.HasKey("UID");
 
-                    b.ToTable("Allasok");
+                    b.ToTable("Allass");
                 });
 
             modelBuilder.Entity("WebApplication2.Models.SiteUser", b =>
@@ -279,13 +281,13 @@ namespace WebApplication2.Data.Migrations
                 {
                     b.HasOne("WebApplication2.Models.Allas", null)
                         .WithMany()
-                        .HasForeignKey("AllasokUID")
+                        .HasForeignKey("AllassUID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebApplication2.Models.SiteUser", null)
                         .WithMany()
-                        .HasForeignKey("JelentkezokId")
+                        .HasForeignKey("SiteUsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

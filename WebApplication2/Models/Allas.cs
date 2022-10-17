@@ -13,10 +13,10 @@ namespace WebApplication2.Models
         public string Vallalat { get; set; }
         public string Megnevezes { get; set; }
         public int Oraber { get; set; }
-        public virtual ICollection<SiteUser> Jelentkezok { get; set; }
+        public virtual ICollection<SiteUser> SiteUsers { get; set; }
         public Allas()
         {
-            this.Jelentkezok = new HashSet<SiteUser>();
+            this.SiteUsers = new HashSet<SiteUser>();
         }
     }
 }

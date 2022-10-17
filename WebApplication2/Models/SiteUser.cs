@@ -15,11 +15,11 @@ namespace WebApplication2.Models
 
         public int MinimumOraber { get; set; }
 
-        public virtual ICollection<Allas> Allasok { get; set; }
+        public virtual ICollection<Allas> Allass { get; set; }
 
         public SiteUser():base()
         {
-            this.Allasok = new HashSet<Allas>();
+            this.Allass = new HashSet<Allas>();
         }
     }
 }

@@ -17,16 +17,19 @@
                 </div>
                 <div class="card-subtitle"> @item.Vallalat</div>
                 <div class="card-text mb-4"> Bérezés: @item.Oraber</div>
-                
-                
-                @if (item.Jelentkezok!=null && !item.Jelentkezok.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
+
+
+                    @if (SignInManager.IsSignedIn(User) && item.SiteUsers != null && !item.SiteUsers.Select(x => x.Id).Contains(UserManager.GetUserId(User)))
                 {
                         <a class="alert alert-primary" href="Allas/Jelentkezes?uid=@item.UID">Jelentkezes</a>
                 }
-                @if (item.Jelentkezok !=null) {
-                    <div class="mt-4 card-subtitle">Jelentkezők: @item.Jelentkezok.Count() fő</div>
-                     @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin")) {
-                         @foreach (var jelentkezo in item.Jelentkezok){
+                    @if (item.SiteUsers != null)
+                    {
+                        <div class="mt-4 card-subtitle">Jelentkezők: @item.SiteUsers.Count() fő</div>
+                        @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+                        {
+                            @foreach (var jelentkezo in item.SiteUsers)
+                            {
                              <span class="">
                                  @jelentkezo.Email
                              </span>
